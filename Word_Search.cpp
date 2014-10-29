@@ -1,3 +1,8 @@
+/*
+给一个N＊N的grid，里面有字母，用户输入一个单词，判断这个单词在不在里面，单词可横可竖，不能弯折，如果在，给出所有解。
+Given a N*N grid which contains letter. When the user input a word, the function need to decide if this word is in the grid. The word can go through the column or row but can not take turn. Return all the valid begin and end position.
+*/
+
 #include <iostream>
 #include <vector>
 using namespace std;
