@@ -36,8 +36,8 @@ public:
                 path(node->right, sum, cal, solution, collection);
             }
         }
-        solution.pop_back();
-        cal -= node-> val;
+        //solution.pop_back();
+        //cal -= node-> val;  no need to back-tracking
         return;
     }
 };
