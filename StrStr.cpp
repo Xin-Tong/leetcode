@@ -23,3 +23,18 @@ public:
         return -1;
     }
 };
+
+//more clear code
+class Solution {
+public:
+    int strStr(char *haystack, char *needle) {
+        //int i,j;
+        for(int i=0;;i++){
+            for(int j=0;;j++){
+                if(j == strlen(needle)) return i; //the order is important
+                if(i+j == strlen(haystack)) return -1;
+                if(needle[j] != haystack[i+j]) break;
+            }
+        }
+    }
+};
