@@ -26,6 +26,9 @@ return
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+ 
+ //hint: if we pass int& cal, we must do back-tracking, because recursion will change the value.
+ //but here I use passing by value, just coping value. so we do not need back-tracking.
 class Solution {
 public:
     vector<vector<int> > pathSum(TreeNode *root, int sum) {
@@ -51,7 +54,40 @@ public:
             }
         }
         solution.pop_back();
-        cal -= node-> val;  
+        //cal -= node-> val;  
         return;
     }
 };
+
+//pay attention to the function argument
+class Solution {
+public:
+    vector<vector<int> > pathSum(TreeNode *root, int sum) {
+        vector<int> solution;
+        vector<vector<int>> collection;
+        if(root != NULL){
+            int cal = 0;
+            path(root, sum, cal, solution, collection);
+        }
+        return collection;
+    }
+    void path(TreeNode *node, int sum, int &cal, vector<int>& solution, vector<vector<int>> &collection){  //reference here
+        solution.push_back(node->val);
+        cal += node->val;
+        if(cal == sum && node->left == NULL && node->right == NULL){
+            collection.push_back(solution);
+        }
+        else{
+            if(node->left != NULL){
+                path(node->left, sum, cal, solution, collection);
+            } 
+            if(node->right != NULL){
+                path(node->right, sum, cal, solution, collection);
+            }
+        }
+        solution.pop_back();
+        cal -= node-> val;   //we do need this line
+        return;
+    }
+};
+
