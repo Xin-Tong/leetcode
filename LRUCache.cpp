@@ -43,7 +43,7 @@ private:
     list<CacheEntry> m_LRU_cache;
     int m_capacity;
     void MoveToHead(int key){
-        CacheEntry updateEntry = *m_map[key];//key对应的list的entry
+        CacheEntry updateEntry = *m_map[key];//key‘s corresponding entry of list
         m_LRU_cache.erase(m_map[key]);
         m_LRU_cache.push_front(updateEntry);
         m_map[key] = m_LRU_cache.begin();

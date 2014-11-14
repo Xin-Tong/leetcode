@@ -1,14 +1,14 @@
 //from Dao
-比如，删除vector里的5
-不能这样写
+
+//delete 5 from vector, we CAN NOT:
 for(auto it = vec.begin(); it != vec.end(); it++)
 {
      if(*it == 5) 
           vec.erase(it);
 }
-erase it后 it已经无效了
-再it++要出错了
 
+//after erasing it, it has no function.
+//if we do it++, will bring errors
 should:
 for(auto it = vec.begin(); it != vec.end(); )
 {
